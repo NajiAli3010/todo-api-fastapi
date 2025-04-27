@@ -78,3 +78,36 @@ requirements.txt   # Python dependencies
 └── workflows/
     └── tests.yml # GitHub Actions workflow
 ```
+
+---
+
+# 🛠 Release Process Diagram (Commit → Build → Test → Deploy)
+
+```mermaid
+graph TD
+
+A[Developer Commit Code] --> B[GitHub triggers GitHub Actions]
+B --> C[Checkout repository]
+C --> D[Set up Python environment]
+D --> E[Install dependencies]
+E --> F[Run linters (black, ruff)]
+E --> G[Type checking (mypy)]
+E --> H[Run unit tests (pytest)]
+
+H -->|All tests pass| I[Optional: Build Docker Image]
+I --> J[Deploy to Testing Environment]
+J --> K[Manual Review or Auto Approval]
+K --> L[Deploy to Production Environment]
+
+H -->|Tests fail| X[Pipeline stops and reports error]
+```
+
+---
+
+# ✅ Diagram Explanation
+- **Commit**: Developer pushes changes.
+- **GitHub Actions**: Starts pipeline.
+- **Setup**: Environment is prepared.
+- **Quality Checks**: Lint, type-check, and unit tests.
+- **If success**: Project can be built (Docker) and deployed.
+- **If failure**: Pipeline stops to prevent bad release.
