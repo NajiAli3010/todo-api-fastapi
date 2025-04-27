@@ -78,9 +78,3 @@ requirements.txt   # Python dependencies
 └── workflows/
     └── tests.yml # GitHub Actions workflow
 ```
-
----
-
-## ✏️ Author
-
-Наџи Али (Naji Ali) — 2025
