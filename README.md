@@ -81,26 +81,25 @@ requirements.txt   # Python dependencies
 
 ---
 
-# 🛠 Release Process Diagram (Commit → Build → Test → Deploy)
+## 🚀 Release Process Diagram
 
 ```mermaid
-graph TD
-
-A[Developer Commit Code] --> B[GitHub triggers GitHub Actions]
-B --> C[Checkout repository]
-C --> D[Set up Python environment]
-D --> E[Install dependencies]
-E --> F[Run linters (black, ruff)]
-E --> G[Type checking (mypy)]
-E --> H[Run unit tests (pytest)]
-
-H -->|All tests pass| I[Optional: Build Docker Image]
-I --> J[Deploy to Testing Environment]
-J --> K[Manual Review or Auto Approval]
-K --> L[Deploy to Production Environment]
-
-H -->|Tests fail| X[Pipeline stops and reports error]
-```
+flowchart TD
+  A[Developer commits code] --> B[GitHub Actions triggered]
+  B --> C[Checkout repository]
+  C --> D[Set up Python environment]
+  D --> E[Install dependencies]
+  E --> F1[Lint with black and ruff]
+  E --> F2[Type check with mypy]
+  E --> F3[Run unit tests with pytest]
+  F1 --> G[All checks passed?]
+  F2 --> G
+  F3 --> G
+  G -->|Yes| H[Build Docker Image]
+  H --> I[Deploy to Testing Environment]
+  I --> J[Optional Manual Approval]
+  J --> K[Deploy to Production Environment]
+  G -->|No| X[Pipeline stops and reports error]
 
 ---
 
