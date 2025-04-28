@@ -83,28 +83,7 @@ requirements.txt   # Python dependencies
 
 ## 🚀 Release Process Diagram (PlantUML)
 
-```plantuml
-@startuml
-start
-:Developer commits code;
-:GitHub Actions triggered;
-:Checkout repository;
-:Set up Python environment;
-:Install dependencies;
-:Run linter (black, ruff);
-:Run type checker (mypy);
-:Run unit tests (pytest);
-if (All checks passed?) then (Yes)
-    :Build Docker Image;
-    :Deploy to Testing Environment;
-    :Manual Review;
-    :Deploy to Production Environment;
-    stop
-else (No)
-    :Pipeline stops and reports error;
-    stop
-endif
-@enduml
+
 
 ---
 
