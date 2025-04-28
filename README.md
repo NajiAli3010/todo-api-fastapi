@@ -81,25 +81,30 @@ requirements.txt   # Python dependencies
 
 ---
 
-## 🚀 Release Process Diagram
+## 🚀 Release Process Diagram (PlantUML)
 
-```mermaid
-flowchart TD
-  A[Developer commits code] --> B[GitHub Actions triggered]
-  B --> C[Checkout repository]
-  C --> D[Set up Python environment]
-  D --> E[Install dependencies]
-  E --> F1[Lint with black and ruff]
-  E --> F2[Type check with mypy]
-  E --> F3[Run unit tests with pytest]
-  F1 --> G[All checks passed?]
-  F2 --> G
-  F3 --> G
-  G -->|Yes| H[Build Docker Image]
-  H --> I[Deploy to Testing Environment]
-  I --> J[Optional Manual Approval]
-  J --> K[Deploy to Production Environment]
-  G -->|No| X[Pipeline stops and reports error]
+```plantuml
+@startuml
+start
+:Developer commits code;
+:GitHub Actions triggered;
+:Checkout repository;
+:Set up Python environment;
+:Install dependencies;
+:Run linter (black, ruff);
+:Run type checker (mypy);
+:Run unit tests (pytest);
+if (All checks passed?) then (Yes)
+    :Build Docker Image;
+    :Deploy to Testing Environment;
+    :Manual Review;
+    :Deploy to Production Environment;
+    stop
+else (No)
+    :Pipeline stops and reports error;
+    stop
+endif
+@enduml
 
 ---
 
