@@ -83,7 +83,7 @@ requirements.txt   # Python dependencies
 
 ## 🚀 Release Process Diagram (PlantUML)
 
-
+![Release Process Diagram](https://github.com/NajiAli3010/todo-api-fastapi/blob/main/PP31JI~1.PNG?raw=true)
 
 ---
 
